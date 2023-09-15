@@ -8,6 +8,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisponibilidadDao {
@@ -21,7 +22,7 @@ public class DisponibilidadDao {
         this.connectionHotel = connectionHotel;
     }
 
-    public List getDisponibilidad(DisponibilidadRequestDto requestDto){
+    public List<DisponibilidadResponseDto> getDisponibilidad(DisponibilidadRequestDto requestDto){
 
 
 
@@ -29,7 +30,7 @@ public class DisponibilidadDao {
 
         CallableStatement statement = null;
 
-        DisponibilidadResponseDto retornado = null;
+        List<DisponibilidadResponseDto> retornado = new ArrayList<>();
 
         ResultSet resultSet = null;
 
@@ -47,20 +48,6 @@ public class DisponibilidadDao {
 
             resultSet.next();
 
-            retornado = new DisponibilidadResponseDto(
-//                    statement.getInt("ID"),
-//                    statement.getString("NOMBRE"),
-//                    null,
-//                    statement.getString("CORREO"),
-//                    statement.getString("TELÉFONO")
-
-                    resultSet.getInt("ID"),
-                    resultSet.getString("NOMBRE"),
-                    null,
-                    resultSet.getString("CORREO"),
-                    resultSet.getString("TELÉFONO")
-
-            );
 
         }
 
@@ -68,8 +55,9 @@ public class DisponibilidadDao {
             e.printStackTrace();
         }
         finally {
-            Conexion.close(statement);
-            Conexion.close(connection);
+            ConnectionHotel.close(statement);
+            ConnectionHotel.close(resultSet);
+            ConnectionHotel.close(connection);
         }
 
         return retornado;
