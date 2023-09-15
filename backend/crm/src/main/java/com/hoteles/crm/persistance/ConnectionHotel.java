@@ -1,2 +1,2 @@
-package com.hoteles.crm.persistance;public class Conexion {
+package com.hoteles.crm.persistance;public interface ConnectionHotel {
 }
