@@ -7,7 +7,8 @@ go
 
 create table Dim_Sede(
 	Id_Sede int not null primary key identity(1, 1),
-	Nombre_Sede varchar(50) not null
+	Nombre_Sede varchar(50) not null,
+	Cupo int not null
 )
 
 create table Dim_Tipo_Habitacion(
@@ -28,6 +29,7 @@ create table Fact_Habitacion(
 	Id_Habitacion int not null primary key identity(1, 1),
 	Piso varchar(10) not null,
 	Numero_Habitacion int not null,
+	Capacidad int not null,
 	Id_Tipo_Habitacion int not null,
 	Id_Sede int not null
 )
