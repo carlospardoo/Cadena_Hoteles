@@ -7,24 +7,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ConnectionHotel {
+public class ConnectionHotelSqlServer implements ConnectionHotel{
 
     private static final String CONNECTION_STRING = "jdbc:sqlserver://DESKTOP-OF8C0A6;databaseName=Cadena_Hoteles;integratedSecurity=true;";
 
     private static Connection conexion;
 
-    public static Connection getConexion(){
+    @Override
+    public Connection getConexion(){
         try {
-            if(ConnectionHotel.conexion == null || conexion.isClosed())
-                ConnectionHotel.conexion = DriverManager.getConnection(ConnectionHotel.CONNECTION_STRING);
+            if(ConnectionHotelSqlServer.conexion == null || conexion.isClosed())
+                ConnectionHotelSqlServer.conexion = DriverManager.getConnection(ConnectionHotelSqlServer.CONNECTION_STRING);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return ConnectionHotel.conexion;
+        return ConnectionHotelSqlServer.conexion;
     }
 
-    public static void close(ResultSet resultSet){
+    @Override
+    public void close(ResultSet resultSet){
         try {
             resultSet.close();
         } catch (SQLException e) {
@@ -32,7 +34,8 @@ public class ConnectionHotel {
         }
     }
 
-    public static void close(Statement statement){
+    @Override
+    public void close(Statement statement){
         try {
             statement.close();
         } catch (SQLException e) {
@@ -40,7 +43,8 @@ public class ConnectionHotel {
         }
     }
 
-    public static void close(PreparedStatement preparedStatement){
+    @Override
+    public void close(PreparedStatement preparedStatement){
         try {
             preparedStatement.close();
         } catch (SQLException e) {
@@ -48,7 +52,8 @@ public class ConnectionHotel {
         }
     }
 
-    public static void close(Connection connection){
+    @Override
+    public void close(Connection connection){
         try {
             connection.close();
         } catch (SQLException e) {
