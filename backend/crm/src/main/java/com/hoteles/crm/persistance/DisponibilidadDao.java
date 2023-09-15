@@ -46,8 +46,9 @@ public class DisponibilidadDao {
 
             resultSet = statement.executeQuery();
 
-            resultSet.next();
+            while (resultSet.next()){
 
+            }
 
         }
 
@@ -55,9 +56,9 @@ public class DisponibilidadDao {
             e.printStackTrace();
         }
         finally {
-            ConnectionHotel.close(statement);
-            ConnectionHotel.close(resultSet);
-            ConnectionHotel.close(connection);
+            connectionHotel.close(statement);
+            connectionHotel.close(resultSet);
+            connectionHotel.close(connection);
         }
 
         return retornado;
