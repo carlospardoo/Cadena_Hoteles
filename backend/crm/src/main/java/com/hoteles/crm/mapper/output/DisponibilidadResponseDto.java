@@ -12,7 +12,7 @@ public class DisponibilidadResponseDto implements Serializable {
 
     private Habitacion habitacion;
 
-    private BigDecimal Total;
+    private BigDecimal total;
 
     private LocalDateTime fechaEntrada;
 
@@ -21,7 +21,7 @@ public class DisponibilidadResponseDto implements Serializable {
     public DisponibilidadResponseDto(int id, Habitacion habitacion, BigDecimal total, LocalDateTime fechaEntrada, LocalDateTime fechaSalida) {
         this.id = id;
         this.habitacion = habitacion;
-        Total = total;
+        this.total = total;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
     }
@@ -43,11 +43,11 @@ public class DisponibilidadResponseDto implements Serializable {
     }
 
     public BigDecimal getTotal() {
-        return Total;
+        return total;
     }
 
     public void setTotal(BigDecimal total) {
-        Total = total;
+        this.total = total;
     }
 
     public LocalDateTime getFechaEntrada() {
